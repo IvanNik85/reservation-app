@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const HomePage = () => (
-  <p>HomePage</p>
-);
+import { AppContext } from "../context/AppContext";
+
+const HomePage = () => {
+  const { appTitle } = useContext(AppContext);
+
+  return (
+    <p>Welcome to {appTitle}</p>
+  );
+};
 
 export default HomePage;

@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 
-import AppRouter from "./routers/AppRouter";
+import AppStore from "./store/AppStore";
 
 render(
-  <AppRouter />,
+  <AppStore />,
   document.getElementById("root")
 );
