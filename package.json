@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node ./src/server/server.js",
+    "dev-server": "nodemon ./src/server/server.js",
     "build:dev": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,5 +32,14 @@
     "regenerator-runtime": "^0.13.5",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "nodemonConfig": {
+    "events": {
+      "start": "npm run build:dev"
+    },
+    "ignore": "public/dist/*"
   }
 }
