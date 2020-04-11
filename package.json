@@ -1,0 +1,23 @@
+{
+  "name": "reservation-app",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node ./src/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanNik85/reservation-app.git"
+  },
+  "keywords": [],
+  "author": "IvanNik85",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IvanNik85/reservation-app/issues"
+  },
+  "homepage": "https://github.com/IvanNik85/reservation-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
