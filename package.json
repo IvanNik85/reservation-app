@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node ./src/server/server.js",
-    "dev-server": "nodemon ./src/server/server.js",
+    "start:dev": "nodemon ./src/server/server.js",
     "build:dev": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,11 +25,17 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
+    "css-loader": "^3.5.2",
     "express": "^4.17.1",
+    "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "normalize-css": "^2.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "regenerator-runtime": "^0.13.5",
+    "sass-loader": "^8.0.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },

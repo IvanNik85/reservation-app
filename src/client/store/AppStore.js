@@ -4,7 +4,7 @@ import AppContextProvider from "../context/AppContext";
 import AppRouter from "../routers/AppRouter";
 
 const AppStore = () => {
-  const [appTitle] = useState("Reservetion App");
+  const [appTitle] = useState("Reservation App");
 
   return (
     <AppContextProvider value={{

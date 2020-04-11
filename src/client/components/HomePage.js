@@ -6,7 +6,9 @@ const HomePage = () => {
   const { appTitle } = useContext(AppContext);
 
   return (
-    <p>Welcome to {appTitle}</p>
+    <div className="homepage">
+      <p>Welcome to {appTitle}</p>
+    </div>
   );
 };
 
