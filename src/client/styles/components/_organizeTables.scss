@@ -1,0 +1,14 @@
+.restaurant-organize {
+    width: 100vw;
+    min-height: 100vh;
+
+    .selection-area {
+        width: 100%;
+        height: 20vh;
+        border-bottom: 3px solid green;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+}
+

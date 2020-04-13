@@ -10,7 +10,7 @@ module.exports = (env) => {
     output: {
       filename: "bundle.js",
       path: path.join(__dirname, "public", "dist")
-    },
+    },    
     module: {
       rules: [
         {
@@ -47,7 +47,7 @@ module.exports = (env) => {
           }
         }
       ]
-    },
+    },    
     plugins: [
       new MiniCssExtractPlugin({ filename: "styles.css" })
     ],

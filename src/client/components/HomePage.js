@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { AppContext } from "../context/AppContext";
 
 const HomePage = () => {
-  const { appTitle } = useContext(AppContext);
+    const { appTitle } = useContext(AppContext);
 
-  return (
-    <div className="homepage">
-      <p>Welcome to {appTitle}</p>
-    </div>
-  );
+    return (
+        <div className="homepage">
+            <p>Welcome to {appTitle}</p>
+            <button><Link to="/organize">Admin table organize</Link></button>
+        </div>
+    );
 };
 
 export default HomePage;
