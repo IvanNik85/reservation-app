@@ -5,8 +5,8 @@ import {
     Route
 } from "react-router-dom";
 
-import HomePage from "../components/HomePage";
-import OrganizeTables from "../components/OrganizeTables";
+import HomePage from "../components/Pages/HomePage";
+import OrganizeTables from "../components/Pages/OrganizeTables";
 
 const AppRouter = () => (
     <Router>

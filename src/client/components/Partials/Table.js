@@ -1,7 +1,8 @@
 import React from 'react';
 import {Rnd} from 'react-rnd';
 
-const Table = () => (       
+const Table = () => (    
+
     <Rnd className="table-basic"
         style={{display: `flex`}}
         default={{
@@ -12,10 +13,12 @@ const Table = () => (
         }}
         minWidth={80}
         minHeight={80}
-        bounds=".selection-area"               
+        bounds=".restoraunt-area"               
     >
+        <div className="seat-1"></div>
+        <div className="seat-2"></div>        
         <i className="fas fa-utensils"></i>
-    </Rnd>    
+    </Rnd>  
 );
 
 export default Table;

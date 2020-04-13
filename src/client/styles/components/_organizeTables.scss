@@ -1,3 +1,9 @@
+
+* body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .restaurant-organize {
     width: 100vw;
     min-height: 100vh;
@@ -9,6 +15,29 @@
         display: flex;
         justify-content: start;
         align-items: center;
+        .generate-table {
+            height: 100%;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .seats-select {
+            height: 100%;
+            width: 300px;
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            h2 {
+                margin: 20px;
+            }
+        }
     }
 }
-
+.restoraunt-area {
+    max-width: 100vw;
+    height: 80vh;
+    margin: 10px;
+}
