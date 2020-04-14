@@ -1,15 +1,17 @@
-import React from "react";
+import React, {useState} from 'react';
 
-const AppContext = React.createContext();
+export const AppContext = React.createContext();
 
-const AppContextProvider = (props) => (
-  <AppContext.Provider
-    value={props.value}
-    children={props.children}
-  />
-);
+const AppContextProvider = (props) => {
+    const [seats, setSeats] = useState([]);
+       
+    return (
+        <AppContext.Provider value={{
+             seats,                      
+        }}>
+            {props.children}
+        </AppContext.Provider>  
+    );
+}
 
-export {
-  AppContextProvider as default,
-  AppContext
-};
+export default AppContextProvider;
