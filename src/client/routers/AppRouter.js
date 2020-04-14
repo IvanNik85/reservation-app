@@ -11,8 +11,8 @@ import OrganizeTables from "../components/Pages/OrganizeTables";
 const AppRouter = () => (
     <Router>
         <Switch>
-            {/* <Route path="/" component={HomePage} exact={true} /> */}
-            <Route path="/" component={OrganizeTables} exact={true} />
+            <Route path="/" component={HomePage} exact={true} />
+            <Route path="/organize" component={OrganizeTables} exact={true} />
         </Switch>
     </Router>
 );

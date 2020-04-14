@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
-const TableGenerator = (props) => (
-    <div className="table-basic">
-        <div className="seat-1"></div>
-        <div className="seat-2"></div> 
-        <i className="fas fa-utensils"></i>
-    </div>
-);
+const TableGenerator = (props) => {
+    const context = useContext(AppContext);
+
+    return (
+        <div className="generate-table">
+            <div className="table-basic"
+                onClick={() =>
+                    context.seats.length ?
+                        props.table() :
+                        alert(`Please select number of seats`)
+                }>
+                {context.seats}
+                <i className="fas fa-utensils"></i>
+            </div>
+        </div>
+    );
+}
 
 export default TableGenerator;
 

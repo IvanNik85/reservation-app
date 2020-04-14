@@ -7,6 +7,7 @@
     height: 80px;
     background: #e1d62f;
     border: 3px solid #af0f0f;   
+    cursor: pointer;
     
     .fa-utensils {
         font-size: 27px;
@@ -27,4 +28,34 @@
         height: 5px;
         background: green;
     }
+    .seat-3 {
+        position: absolute;
+        left: -28px;
+        width: 40px;
+        height: 5px;
+        background: green;
+        transform: rotate(90deg);
+    }
+    .seat-4 {
+        position: absolute;
+        right: -28px;
+        width: 40px;
+        height: 5px;
+        background: green;
+        transform: rotate(90deg);
+    }
+    // .seat-5 {
+    //     position: absolute;
+    //     top: -10px;
+    //     width: 40px;
+    //     height: 5px;
+    //     background: green;       
+    // }
+    // .seat-6 {
+    //     position: absolute;
+    //     bottom: -10px;
+    //     width: 40px;
+    //     height: 5px;
+    //     background: green;        
+    // }
 }
