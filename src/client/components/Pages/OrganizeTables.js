@@ -11,9 +11,15 @@ const OrganizeTables = () => {
 
     const seatsNumber = (num) => {
         let table = [];
+        let position;
+
         num === "0" && (table.length = 0);
         for (let i = 1; i <= num; i++) {
-            table = [...table, <div key={i} className={`seat-${i}`}></div>];
+            ((num === "6" || num === "8") && (i === 1 || i === 2)) ?
+                (position = { left: `15%` }) :
+                (position = {});
+            num === "8" && (i === 3 || i === 4) && (position = { top: `20%` })
+            table = [...table, <div key={i} style={position} className={`seat-${i}`}></div>];
         }
         setSeats(table);
         context.seats = table;
@@ -29,6 +35,10 @@ const OrganizeTables = () => {
             <div className="selection-area">
                 <TableGenerator table={addTable} />
                 <SeatsSelect seat={seatsNumber} />
+                <div className="rotateDel">
+                    <button>Delete</button>
+                    <button>Rotate</button>
+                </div>
             </div>
 
             <div className="restoraunt-area">
