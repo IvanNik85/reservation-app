@@ -18,12 +18,13 @@ const TableGenerator = (props) => {
         <div className="generate-table">
             <div className="table-wrap">
                 <div className="table-basic scale"
+               
                     style={tableDimension()}
                     onClick={() =>
                         context.seats.length ?
                             props.table() :
                             alert(`Please select number of seats`)
-                    }>
+                    }>                        
                     {context.seats}
                     <i className="fas fa-utensils"></i>
                 </div>

@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import { AppContext } from '../../context/AppContext';
 
 const Table = () => {
-    const tableData = useContext(AppContext);
-
+    const context = useContext(AppContext);     
+   
     const selectTable = () => {
-        switch (tableData.seats.length) {
+        switch (context.seats.length) {
             case 2:
                 return table(80, 80, `#42ba8a`)
             case 4:
@@ -16,22 +16,25 @@ const Table = () => {
             case 8:
                 return table(160, 160, `#ba4277`)
         }
-    }
-
+    }    
+     
     const table = (width, height, color) => (
         <Rnd className="table-basic"
+            data-id={`${context.tableID}`}       
             style={{ display: `flex`, background: color }}
             default={{
                 x: 50,
                 y: 50,
                 width: width,
-                height: height
+                height: height,
             }}
             minWidth={width}
             minHeight={height}
+            // disableDragging    
+            enableResizing      
             bounds=".restoraunt-area"
         >
-            {tableData.seats}
+            {context.seats}
             <i className="fas fa-utensils"></i>
         </Rnd>
     )
