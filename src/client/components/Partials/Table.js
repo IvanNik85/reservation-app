@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import { AppContext } from '../../context/AppContext';
 
-const Table = () => {
-    const context = useContext(AppContext);     
-   
+const Table = (props) => {
+    const context = useContext(AppContext);
+
     const selectTable = () => {
         switch (context.seats.length) {
             case 2:
@@ -16,32 +16,77 @@ const Table = () => {
             case 8:
                 return table(160, 160, `#ba4277`)
         }
-    }    
-     
-    const table = (width, height, color) => (
-        <Rnd className="table-basic"
-            data-id={`${context.tableID}`}       
-            style={{ display: `flex`, background: color }}
-            default={{
-                x: 50,
-                y: 50,
-                width: width,
-                height: height,
-            }}
-            minWidth={width}
-            minHeight={height}
-            // disableDragging    
-            enableResizing      
-            bounds=".restoraunt-area"
-        >
-            {context.seats}
-            <i className="fas fa-utensils"></i>
-        </Rnd>
-    )
+    }
+    context.tableDimension = selectTable;
 
-    return (
-        selectTable()
-    )
+//     const table = (width, height, color) => {
+//         const Box = () => (
+//             <div
+//                 className="table-basic"
+//                 data-id={`${context.tableID}`}
+//                 style={{
+//                     display: `flex`,
+//                     height: height,
+//                     width: width,
+//                     background: color,
+//                     transform: `rotate(${props.rotate}deg)`
+//                 }}
+//             >
+//                 {context.seats}
+//                 <i className="fas fa-utensils"
+//                     style={{ transform: `rotate(-${props.rotate}deg)` }}
+//                 >
+//                 </i>
+//             </div>
+//         );
+
+//         return (
+//             <Rnd
+//                 default={{
+//                     x: 50,
+//                     y: 50,
+//                     width: width,
+//                     height: height,
+//                 }}
+//                 minWidth={width}
+//                 minHeight={height}
+//                 // disableDragging    
+//                 enableResizing
+//                 bounds=".restoraunt-area"
+//             >
+//                 <Box />
+//             </Rnd>
+//         )
+//     }
+//     return (
+//         selectTable()
+//     )
+// }
+
+const table = (width, height, color) => (
+    <Rnd className="table-basic"
+        data-id={`${context.tableID}`}       
+        style={{ display: `flex`, background: color, transform: `rotate(${props.rotate}deg)` }}
+        default={{
+            x: 50,
+            y: 50,
+            width: width,
+            height: height,
+        }}
+        minWidth={width}
+        minHeight={height}
+        // disableDragging    
+        enableResizing      
+        bounds=".restoraunt-area"
+    >
+        {context.seats}
+        <i className="fas fa-utensils"></i>
+    </Rnd>
+)
+
+return (
+    selectTable()
+)
 }
 
 export default Table;

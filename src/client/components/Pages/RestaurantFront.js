@@ -2,26 +2,34 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 
 const RestaurantFront = () => {
-    const context = useContext(AppContext);        
-    console.log(context)
-    useEffect(() => {
-       
-      });
+    const context = useContext(AppContext);
+    const styleTable = context.table;
+    console.log(context.allData)
     return (
         <div>
             <div className="selection">
                 <h1>Choose yor table!</h1>
             </div>
 
-            <div className="restoraunt">
-                <div className="table-basic"
-                    // style={{ transform: `${asd}` }}
-
-                    onClick={() => console.log(`FRONT`)}
-                >
-
-                    <i className="fas fa-utensils"></i>
-                </div>
+            <div className="restoraunt-area front">
+                {context.allData.map((item, i) => {
+                    return (<div className="table-basic"
+                        key={i}
+                        style={
+                            {
+                                width: `${item.width}`,
+                                height: `${item.height}`,
+                                transform: `${item.cordinates}`,
+                                background: `${styleTable(item.seats.length).background}`
+                            }
+                        }
+                        onClick={() => console.log(`FRONT`)}
+                    >
+                        {item.seats}
+                        <i className="fas fa-utensils"></i>
+                    </div>)
+                })
+                }
             </div>
         </div>
     )

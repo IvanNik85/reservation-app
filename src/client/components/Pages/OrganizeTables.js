@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 const OrganizeTables = () => {
     const context = useContext(AppContext);
     const [seats, setSeats] = useState([])
-    const [table, setTable] = useState([])    
+    const [table, setTable] = useState([])
+    const [rotate, setRotate] = useState(0)
 
     const seatsNumber = (num) => {
         let table = [];
@@ -21,41 +22,54 @@ const OrganizeTables = () => {
                 (position = {});
             num === "8" && (i === 3 || i === 4) && (position = { top: `20%` })
             table = [...table, <div key={i} style={position} className={`seat-${i}`}></div>];
-        }        
+        }
         setSeats(table);
-        context.seats = table;
+        context.seats = table;        
     }
 
     const collectData = () => {
         const data = document.querySelectorAll(`.table-basic`);
-        const dataId = Array(context.tableID).fill(0).map((e,i) => i + 1); 
-        let collectedData = dataId.map(v => ({id: v, seats: data[v].childElementCount - 2, cordinates: data[v].style.transform}));        
-        context.allData = collectedData;
-        console.log(context.allData)
+        const dataId = Array(context.tableID).fill(0).map((e, i) => i + 1);
+        let collectedData = context.tableID && dataId.map((v,i) => (
+            {
+                id: v,                
+                seats: context.seatsData[i],
+                width: data[v].style.width,
+                height: data[v].style.height,
+                cordinates: data[v].style.transform
+            }
+        ));
+        context.allData = collectedData;       
     }
-
+    
     const addTable = () => {
-        setTable([...table, <Table />])
-        context.tableID = ++table.length
+        setTable([...table, <Table key={table.length} rotate={rotate}/>])
+        context.tableID = ++table.length;
+        context.seatsData = [...context.seatsData, seats];
     }
 
     const removeTable = () => {
-        let allTables = document.querySelector(`.restoraunt-area i`);
-        if(allTables) 
-            allTables.classList.toggle(`fa-utensils`)         
-            allTables.classList.toggle(`fa-times-circle`)        
+        let tableRemoved = table.length ? table.slice(0, -1) : [];
+        context.tableID && (context.tableID = table.length - 1);
+        context.seatsData && context.seatsData.pop();        
+        setTable(tableRemoved);
     }
-    
+
+    const rotateTable = () => {
+        let rotateTable = rotate + 45;
+        setRotate(rotateTable);
+    }
+
     return (
         <div className="restaurant-organize">
 
             <div className="selection-area">
-                <TableGenerator table={addTable} />
+                <TableGenerator table={addTable} rotate={rotate}/>
                 <SeatsSelect seat={seatsNumber} />
                 <div className="rotateDel">
-                    <button className="deleteBtn" onClick={removeTable}>Delete</button>
-                    <button className="rotateBtn">Rotate</button>
-                    <button className="collectBtn" onClick={collectData}>Get DATA</button>
+                    <button className="deleteBtn" onClick={removeTable}>Undo</button>
+                    <button className="rotateBtn" onClick={rotateTable}>Rotate</button>
+                    <button className="collectBtn" onClick={collectData}>Save</button>
                 </div>
                 <div className="goToFront">
                     <button className="toFront"><Link to={'/front'}>Front restoraunt</Link></button>

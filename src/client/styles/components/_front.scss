@@ -1,6 +1,6 @@
 body {
-    // height: 100vh;
-    // width: 100vw;
+    height: 100vh;
+    width: 100vw;
 
 .selection {
     width: 100%;
@@ -12,10 +12,9 @@ body {
     align-items: center;    
     background: #e5e5e5;
 }
-.restoraunt {      
-    position: relative;      
-    max-width: 100vw;
-    min-height: 80vh;    
-    background: #514f4f;    
-    }
-}
+.table-basic {
+    position: absolute;
+    box-sizing: border-box;
+    }     
+}     
+   

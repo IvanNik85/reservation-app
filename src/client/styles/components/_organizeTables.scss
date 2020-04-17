@@ -1,4 +1,19 @@
 
+@mixin buttonStyle {
+    width: 150px;
+    height: 45px;
+    margin: 5px;
+    font-size: 15px;
+    border: 2px solid #363637;
+    transition: all .2s;
+
+    &:hover {
+    background: #363637;
+    color: #fff; 
+    cursor: pointer;
+    }
+}
+
 * body {
     margin: 0;
     padding: 0;
@@ -65,16 +80,21 @@
             justify-content: center;
 
             button {
-                width: 150px;
-                height: 45px;
-                margin: 5px;
-                border: 2px solid #363637;
-                transition: all .2s;
-                
-                &:hover {
-                   background: #363637;
-                   color: #fff; 
-                   cursor: pointer;
+                @include buttonStyle;
+            }
+        }
+
+        .goToFront {
+            button {
+                @include buttonStyle;
+
+                &:hover a {
+                    color: #fff;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #000;                    
                 }
             }
         }
@@ -96,5 +116,10 @@
         height: calc(80vh + 20px);        
         position: absolute;
      }
+
+    .fa-times-circle {
+        font-size: 30px;
+        color: #041e2a;
+    }
 }
     
