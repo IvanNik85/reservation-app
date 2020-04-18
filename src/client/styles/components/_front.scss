@@ -12,9 +12,28 @@ body {
     align-items: center;    
     background: #e5e5e5;
 }
-.table-basic {
-    position: absolute;
-    box-sizing: border-box;
+.front {    
+
+    .table-basic {
+        position: absolute;
+        box-sizing: border-box;
+        transition: all .3s;
+
+        &:hover {
+            border: 3px solid #eceaea;
+            background: #0fbe3bad !important;
+        }
+
+        div {
+            transition: all .3s;
+        }
+        
+        @for $i from 1 through 8 {
+            &:hover div:nth-child(#{$i}){                
+                background: #838181;
+            }
+        }
+        }     
     }     
-}     
+}
    

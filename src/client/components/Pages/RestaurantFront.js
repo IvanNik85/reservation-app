@@ -13,20 +13,21 @@ const RestaurantFront = () => {
 
             <div className="restoraunt-area front">
                 {context.allData.map((item, i) => {
+                    let [rotValue] = item.rotated.match(/\d+/g)
                     return (<div className="table-basic"
                         key={i}
                         style={
                             {
                                 width: `${item.width}`,
                                 height: `${item.height}`,
-                                transform: `${item.cordinates}`,
+                                transform: `${item.cordinates} ${item.rotated}`,
                                 background: `${styleTable(item.seats.length).background}`
                             }
                         }
                         onClick={() => console.log(`FRONT`)}
                     >
                         {item.seats}
-                        <i className="fas fa-utensils"></i>
+                        <i className="fas fa-utensils" style={{transform: `rotate(-${rotValue}deg)`}}></i>
                     </div>)
                 })
                 }

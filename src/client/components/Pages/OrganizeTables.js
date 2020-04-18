@@ -23,8 +23,9 @@ const OrganizeTables = () => {
             num === "8" && (i === 3 || i === 4) && (position = { top: `20%` })
             table = [...table, <div key={i} style={position} className={`seat-${i}`}></div>];
         }
+        setRotate(0);    
         setSeats(table);
-        context.seats = table;        
+        context.seats = table;    
     }
 
     const collectData = () => {
@@ -36,7 +37,8 @@ const OrganizeTables = () => {
                 seats: context.seatsData[i],
                 width: data[v].style.width,
                 height: data[v].style.height,
-                cordinates: data[v].style.transform
+                rotated: data[v].style.transform,
+                cordinates: data[v].parentElement.style.transform
             }
         ));
         context.allData = collectedData;       
