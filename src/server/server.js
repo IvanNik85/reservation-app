@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+require("./db/mongoose");
 
 const server = express();
 const port = process.env.PORT || 3000;
