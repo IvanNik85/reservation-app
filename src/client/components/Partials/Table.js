@@ -3,7 +3,7 @@ import { Rnd } from 'react-rnd';
 import { AppContext } from '../../context/AppContext';
 
 const Table = (props) => {
-    const context = useContext(AppContext);
+    const context = useContext(AppContext);    
 
     const selectTable = () => {
         switch (context.seats.length) {
@@ -17,18 +17,19 @@ const Table = (props) => {
                 return table(160, 160, `#ba4277`)
         }
     }
+        
     context.tableDimension = selectTable;
 
     const table = (width, height, color) => {
         const Box = () => (
-            <div className="table-basic"               
+            <div className="table-basic react-draggable"               
                 data-id={`${context.tableID}`}
                 style={{
                     display: `flex`,
                     height: height,
                     width: width,
                     background: color,
-                    transform: `rotate(${props.rotate}deg)`
+                    transform: `rotate(${props.rotate}deg) scale(${props.size})`
                 }}
             >
                 {context.seats}

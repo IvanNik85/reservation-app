@@ -21,17 +21,17 @@ const RestaurantFront = () => {
     const [initialW, setInitial] = useState(window.innerWidth)
     const styleTable = context.table;
     const [width, height] = useWindowSize();
-    let zoomPercent = width / initialW * 100;
+    let zoomPercent = width / initialW; // * 100   
 
     return (
-        <div>
+        <div className="restoraunt-front">
             <div className="selection">
                 <h1>Select time, date</h1>                
             </div>
 
             <div className="restoraunt-wrap">
-                <div className="restoraunt-area front" style={{ zoom: `${zoomPercent}%`}}>
-                    {context.allData.map((item, i) => {
+                <div className="restoraunt-area" style={{ zoom: zoomPercent }}> {/* transform: `scale(${(zoomPercent < 1 ? zoomPercent : 1)})` */}
+                    {context.TableData.map((item, i) => {
                         let [rotValue] = item.rotated.match(/\d+/g)
                         return (<div className="table-basic"
                             key={i}

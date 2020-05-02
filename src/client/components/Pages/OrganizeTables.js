@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Table from '../Partials/Table';
 import TableGenerator from '../Partials/TableGenerator';
 import { AppContext } from '../../context/AppContext';
@@ -10,6 +10,7 @@ const OrganizeTables = () => {
     const [seats, setSeats] = useState([])
     const [table, setTable] = useState([])
     const [rotate, setRotate] = useState(0)
+    const [tableSize, setTableSize] = useState(0.8)    
 
     const seatsNumber = (num) => {
         let table = [];
@@ -30,6 +31,10 @@ const OrganizeTables = () => {
 
     const collectData = () => {
         const data = document.querySelectorAll(`.table-basic`);
+        if (context.tableID === 0) {
+            alert(`No tables selected!`)
+            return;
+        }
         const dataId = Array(context.tableID).fill(0).map((e, i) => i + 1);
         let collectedData = context.tableID && dataId.map((v,i) => (
             {
@@ -41,11 +46,11 @@ const OrganizeTables = () => {
                 cordinates: data[v].parentElement.style.transform
             }
         ));
-        context.allData = collectedData;       
+        context.TableData = collectedData;       
     }
     
     const addTable = () => {
-        setTable([...table, <Table key={table.length} rotate={rotate}/>])
+        setTable([...table, <Table key={table.length} rotate={rotate} size={tableSize}/>])
         context.tableID = ++table.length;
         context.seatsData = [...context.seatsData, seats];
     }
@@ -66,15 +71,17 @@ const OrganizeTables = () => {
         <div className="restaurant-organize">
 
             <div className="selection-area">
-                <TableGenerator table={addTable} rotate={rotate}/>
+                <div className="generate-table">
+                    <TableGenerator table={addTable} rotate={rotate} size={tableSize}/>
+                    <button className="sizeBtn increase" onClick={() => tableSize < 1 && setTableSize(tableSize + 0.1)}>+</button>
+                    <button className="sizeBtn decrease" onClick={() => tableSize > 0.6 && setTableSize(tableSize - 0.1)}>-</button>   
+                </div>
                 <SeatsSelect seat={seatsNumber} />
                 <div className="rotateDel">
                     <button className="deleteBtn" onClick={removeTable}>Undo</button>
                     <button className="rotateBtn" onClick={rotateTable}>Rotate</button>
                     <button className="collectBtn" onClick={collectData}>Save</button>
-                </div>
-                <div className="goToFront">
-                    <button className="toFront"><Link to={'/front'}>Front restoraunt</Link></button>
+                    <button className="toFront"><Link to={'/front'}>Front</Link></button>                                    
                 </div>
             </div>
 

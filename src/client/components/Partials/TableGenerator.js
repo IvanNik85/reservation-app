@@ -15,26 +15,24 @@ const TableGenerator = (props) => {
     }
     context.table = tableDimension;
 
-    return (
-        <div className="generate-table">
-            <div className="table-wrap">
-                <div className="table-basic scale"
+    return (       
+        <div className="table-wrap">
+            <div className="table-basic scale"
 
-                    style={{
-                        transform: `scale(.7) rotate(${props.rotate}deg)`,
-                        ...tableDimension()
-                    }}
-                    onClick={() =>
-                        context.seats.length ?
-                            props.table() :
-                            alert(`Please select number of seats`)
-                    }>
-                    {context.seats}
-                    <i className="fas fa-utensils" style={{
-                        transform: `rotate(-${props.rotate}deg)`}}></i>
-                </div>
+                style={{
+                    transform: `scale(${props.size}) rotate(${props.rotate}deg)`,
+                    ...tableDimension()
+                }}
+                onClick={() =>
+                    context.seats.length ?
+                        props.table() :
+                        alert(`Please select number of seats`)
+                }>
+                {context.seats}
+                <i className="fas fa-utensils" style={{
+                    transform: `rotate(-${props.rotate}deg)`}}></i>
             </div>
-        </div>
+        </div>      
     );
 }
 

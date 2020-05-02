@@ -3,8 +3,7 @@ import React from 'react';
 const SeatsSelect = (props) => {
 
     return (
-        <div className="seats-select">
-            <h2>Choose table:</h2>
+        <div className="seats-select">          
             <select onChange={(event) => props.seat(event.target.value)}>
                 <option value="0">Select table:</option>
                 <option value="2">2 seats</option>
