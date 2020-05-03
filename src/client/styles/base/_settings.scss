@@ -1,0 +1,13 @@
+// Devices
+$phone-small: 400px;
+$phone: 576px;
+$tablet: 768px;
+$laptop: 992px;
+$desktop: 1200px;
+
+// Mixins
+@mixin responsive($device) {
+    @media (max-width: #{$device}) {
+        @content;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Table from '../Partials/Table';
 import TableGenerator from '../Partials/TableGenerator';
 import { AppContext } from '../../context/AppContext';
@@ -11,6 +11,11 @@ const OrganizeTables = () => {
     const [table, setTable] = useState([])
     const [rotate, setRotate] = useState(0)
     const [tableSize, setTableSize] = useState(0.8)    
+    console.log(context)
+
+    useEffect(() => {        
+        clearLayoutData();
+    }, [])
 
     const seatsNumber = (num) => {
         let table = [];
@@ -31,6 +36,7 @@ const OrganizeTables = () => {
 
     const collectData = () => {
         const data = document.querySelectorAll(`.table-basic`);
+        context.tableData && (context.tableData.length = 0);
         if (context.tableID === 0) {
             alert(`No tables selected!`)
             return;
@@ -67,6 +73,18 @@ const OrganizeTables = () => {
         setRotate(rotateTable);
     }
 
+    const clearLayoutData = () => {
+        context.TableData.length = 0;
+        context.seatsData.length = 0;        
+        context.seats.length = 0;
+        context.tableID = 0;  
+        seatsNumber(0);     
+    }
+
+    const clearData = () => {       
+        confirm(`Are you sure to keep current layout?`);
+    }
+
     return (
         <div className="restaurant-organize">
 
@@ -81,7 +99,7 @@ const OrganizeTables = () => {
                     <button className="deleteBtn" onClick={removeTable}>Undo</button>
                     <button className="rotateBtn" onClick={rotateTable}>Rotate</button>
                     <button className="collectBtn" onClick={collectData}>Save</button>
-                    <button className="toFront"><Link to={'/front'}>Front</Link></button>                                    
+                    <button className="toFront" onClick={clearData}><Link to={'/front'}>Front</Link></button>                                    
                 </div>
             </div>
 
