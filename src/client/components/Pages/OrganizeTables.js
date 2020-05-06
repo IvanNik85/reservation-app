@@ -10,8 +10,8 @@ const OrganizeTables = () => {
     const [seats, setSeats] = useState([])
     const [table, setTable] = useState([])
     const [rotate, setRotate] = useState(0)
-    const [tableSize, setTableSize] = useState(0.8)    
-    console.log(context)
+    const [tableSize, setTableSize] = useState(0.8)  
+    const [saved, setSaved] = useState(false)    
 
     useEffect(() => {        
         clearLayoutData();
@@ -52,6 +52,7 @@ const OrganizeTables = () => {
                 cordinates: data[v].parentElement.style.transform
             }
         ));
+        setSaved(true)
         context.TableData = collectedData;       
     }
     
@@ -81,8 +82,10 @@ const OrganizeTables = () => {
         seatsNumber(0);     
     }
 
-    const clearData = () => {       
-        confirm(`Are you sure to keep current layout?`);
+    const saveAlert = () => {   
+        context.TableData.length ? 
+        confirm(`Are you sure to keep current layout?`):
+        alert(`No table data saved!`);
     }
 
     return (
@@ -98,8 +101,8 @@ const OrganizeTables = () => {
                 <div className="rotateDel">
                     <button className="deleteBtn" onClick={removeTable}>Undo</button>
                     <button className="rotateBtn" onClick={rotateTable}>Rotate</button>
-                    <button className="collectBtn" onClick={collectData}>Save</button>
-                    <button className="toFront" onClick={clearData}><Link to={'/front'}>Front</Link></button>                                    
+                    <button className="collectBtn" onClick={collectData}>Save</button>                   
+                    <Link to={saved? '/front': '#'}><button className="toFront" onClick={saveAlert}>Front</button></Link>                                                
                 </div>
             </div>
 

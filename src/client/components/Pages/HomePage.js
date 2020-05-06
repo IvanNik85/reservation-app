@@ -8,7 +8,7 @@ const HomePage = () => {
 
     return (
         <div className="homepage">
-            <p>Welcome to {appTitle}</p>
+            <h2>Welcome to The Three Musketeers restoraunt App{appTitle}</h2>
             <button><Link to="/organize">Admin table organize</Link></button>
         </div>
     );
